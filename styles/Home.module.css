@@ -190,21 +190,31 @@ button:active.lightButton {
   }
 }
 
+/* for mobile */
 @media screen and (max-width: 375px) {
   .main {
     padding: 0;
   }
 
-  .hospitalCard {
+  .hospitalCard,
+  .locationCard {
     min-width: 100%;
     margin: 20px 0 40px 0;
+    padding: 5%;
+  }
+
+  .hospitalCard:hover,
+  .locationCard:hover {
+    /* border: 1px solid #237ae1; */
+    /* color: #237ae1; */
+    transform: none;
   }
 
   .hospitalName {
     font-size: 0.8em;
   }
 
-  .address,
+  .subtext,
   .businessInfo {
     font-size: 0.7em;
   }
