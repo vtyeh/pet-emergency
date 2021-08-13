@@ -1,20 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
 .container {
-  min-height: 100vh;
+  /* min-height: 100vh;
   padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100vh; */
+}
+
+.navbar {
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid #383838;
+}
+
+.navbarLinks {
+  font-size: 0.8em;
+  float: right;
 }
 
 .main {
-  padding: 5rem 0;
-  flex: 1;
+  /* padding: 5rem 0;
+  flex: 1; */
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  /* flex-direction: column; */
+  justify-content: space-around;
+  padding: 1em;
+  /* align-items: center; */
 }
 
 .footer {
@@ -22,100 +35,182 @@
   height: 100px;
   border-top: 1px solid #eaeaea;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-evenly;
+  align-items: left;
+  flex-direction: column;
+  opacity: 0.6;
+  font-size: 0.7em;
 }
 
-.footer a {
+/* .instructions {
+  width: 50%;
+} */
+
+/* .nearestHospitals {
+  width: 50%;
+} */
+
+.hospitalCard,
+.locationCard {
+  min-width: 400px;
+  max-width: 500px;
   display: flex;
+  justify-content: space-evenly;
+  border: 1px solid white;
+  padding: 3%;
+  margin: 40px 0 40px 20px;
+  width: 90%;
+  height: 12em;
+  border-radius: 25px;
+  background-color: white;
+  filter: drop-shadow(0 0.5rem 0.5rem rgba(0, 0, 0, 0.2));
+  transition: all 0.2s;
+  /* drop-shadow(offset-x offset-y blur-radius color) */
+}
+
+.hospitalCard:hover,
+.locationCard:hover {
+  /* border: 1px solid #237ae1; */
+  /* color: #237ae1; */
+  transform: translateY(-2px);
+  filter: drop-shadow(0 1rem 1rem rgba(0, 0, 0, 0.2));
+}
+
+.cardLeft {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-}
-
-.title a {
-  color: #0070f3;
-  text-decoration: none;
-}
-
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
-}
-
-.title {
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
-}
-
-.title,
-.description {
   text-align: center;
-}
-
-.description {
   line-height: 1.5;
-  font-size: 1.5rem;
+  padding-right: 1em;
 }
 
-.code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
-}
-
-.grid {
+.cardRight {
+  width: 70%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
-  margin-top: 3rem;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
-.card {
-  margin: 1rem;
-  padding: 1.5rem;
-  text-align: left;
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
+.subtext {
+  font-size: 0.8em;
+  opacity: 0.6;
+}
+
+.businessInfo {
+  font-size: 0.85em;
+  opacity: 0.6;
+  display: flex;
+  justify-content: space-between;
+}
+
+.rating {
+  font-size: 0.8em;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.lightButton {
+  font-family: Poppins, sans-serif;
+  background-color: white;
+  border: 1px solid #237ae1;
+  border-radius: 25px;
+  color: #237ae1;
+  /* padding: 0.7em 3em; */
   width: 45%;
+  height: 100%;
+  padding: 0.65em;
+  transition: all 0.3s;
 }
 
-.card:hover,
-.card:focus,
-.card:active {
-  color: #0070f3;
-  border-color: #0070f3;
+.darkButton {
+  font-family: Poppins, sans-serif;
+  background-color: #237ae1;
+  border: 1px solid #237ae1;
+  border-radius: 25px;
+  color: white;
+  width: 45%;
+  height: 100%;
+  transition: all 0.3s;
 }
 
-.card h2 {
-  margin: 0 0 1rem 0;
-  font-size: 1.5rem;
+.getLocationButton {
+  font-family: Poppins, sans-serif;
+  background-color: #237ae1;
+  border: 1px solid #237ae1;
+  border-radius: 25px;
+  color: white;
+  padding: 1em;
+  transition: all 0.3s;
 }
 
-.card p {
-  margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.5;
+button:active.darkButton,
+button:active.getLocationButton {
+  color: rgba(0, 112, 243, 1);
+  background-color: rgba(0, 112, 243, 0.2);
+  transition: all 0.3s;
 }
 
-.logo {
-  height: 1em;
-  margin-left: 0.5rem;
+button:active.lightButton {
+  background-color: rgba(0, 112, 243, 0.8);
+  color: white;
+  transition: all 0.3s;
 }
 
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
+@media screen and (max-width: 1024px) {
+  .hospitalCard {
+    min-width: 400px;
+  }
+
+  .hospitalName,
+  .miles {
+    font-size: 0.9em;
+  }
+
+  .address,
+  .businessInfo {
+    font-size: 0.75em;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .main {
+    display: flex;
     flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .hospitalCard {
+    min-width: 350px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .main {
+    padding: 0;
+  }
+
+  .hospitalCard {
+    min-width: 100%;
+    margin: 20px 0 40px 0;
+  }
+
+  .hospitalName {
+    font-size: 0.8em;
+  }
+
+  .address,
+  .businessInfo {
+    font-size: 0.7em;
+  }
+
+  .darkButton,
+  .lightButton {
+    font-size: 0.8em;
   }
 }
