@@ -8,24 +8,40 @@
   justify-content: center;
   align-items: center;
   height: 100vh; */
+  padding: 0 5em 0 5em;
 }
 
 .navbar {
   padding-bottom: 0.5em;
   border-bottom: 1px solid #383838;
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
 }
 
 .navbarLinks {
   font-size: 0.8em;
-  float: right;
+  display: flex;
+  align-items: center;
+}
+
+.company {
+  display: flex;
+  justify-content: space-evenly;
+  /* width: 9em; */
+}
+
+.company > .logo {
+  margin-right: 0.5em !important;
+  transform: translateY(0.2em);
 }
 
 .main {
   /* padding: 5rem 0;
   flex: 1; */
   display: flex;
-  /* flex-direction: column; */
-  justify-content: space-around;
+  flex-direction: row;
+  justify-content: space-evenly;
   padding: 1em;
   /* align-items: center; */
 }
@@ -148,6 +164,18 @@
   transition: all 0.3s;
 }
 
+.refreshButton {
+  font-family: Poppins, sans-serif;
+  background-color: transparent;
+  border: none;
+  border-radius: 25px;
+  color: #237ae1;
+}
+
+.refreshButton:hover {
+  color: gray;
+}
+
 button:active.darkButton,
 button:active.getLocationButton {
   color: rgba(0, 112, 243, 1);
@@ -162,6 +190,10 @@ button:active.lightButton {
 }
 
 @media screen and (max-width: 1024px) {
+  .container {
+    padding: 0;
+  }
+
   .hospitalCard {
     min-width: 400px;
   }
@@ -178,6 +210,10 @@ button:active.lightButton {
 }
 
 @media screen and (max-width: 800px) {
+  .container {
+    padding: 0;
+  }
+
   .main {
     display: flex;
     flex-direction: column;
@@ -185,6 +221,10 @@ button:active.lightButton {
 }
 
 @media screen and (max-width: 500px) {
+  .container {
+    padding: 0;
+  }
+
   .hospitalCard {
     min-width: 350px;
   }
@@ -192,6 +232,10 @@ button:active.lightButton {
 
 /* for mobile */
 @media screen and (max-width: 375px) {
+  .container {
+    padding: 0;
+  }
+
   .main {
     padding: 0;
   }
@@ -207,7 +251,8 @@ button:active.lightButton {
   .locationCard:hover {
     /* border: 1px solid #237ae1; */
     /* color: #237ae1; */
-    transform: none;
+    transform: translateY(0px);
+    filter: drop-shadow(0 0.5rem 0.5rem rgba(0, 0, 0, 0.2));
   }
 
   .hospitalName {
