@@ -31,8 +31,8 @@ export default function Hospitals({ data, error }) {
         const closeTime = hours.end;
         const openHour = Number(hours.start.substring(0, 2));
         const openMin = Number(hours.start.substring(2, 4));
-        const closeHour = Number(hours.start.substring(0, 2));
-        const closeMin = Number(hours.start.substring(2, 4));
+        const closeHour = Number(hours.end.substring(0, 2));
+        const closeMin = Number(hours.end.substring(2, 4));
 
         console.log({ name, openHour, openMin });
 
