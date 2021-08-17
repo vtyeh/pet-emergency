@@ -1,14 +1,13 @@
 import { useRouter } from "next/router";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
-import planet from "../public/location-request.svg";
+import EnableLocation from "./EnableLocation";
+import RefreshLocation from "./RefreshLocation";
 
-export default function NearestHospitals() {
+export default function NearestHospitals({ refresh }) {
   const router = useRouter();
 
   const getCoordinates = (position) => {
-    router.push({
-      pathname: "/hospital-near",
+    router.replace({
+      pathname: "/",
       query: { lat: position.coords.latitude, long: position.coords.longitude },
     });
   };
@@ -22,28 +21,12 @@ export default function NearestHospitals() {
   };
 
   return (
-    <section className={styles.nearestHospitals}>
-      <h3>Nearest emergency pet hospitals</h3>
-      <div className={styles.locationCard}>
-        <div className={styles.cardLeft}>
-          {/* svg from undraw.org */}
-          <Image src={planet} alt="planet" />
-        </div>
-        <div className={styles.cardRight}>
-          <strong>Location Service</strong>
-          <span className={styles.subtext}>
-            This service requires your location to find nearby emergency pet
-            hospitals.
-          </span>
-          <button
-            type="button"
-            className={styles.getLocationButton}
-            onClick={getGeoLocation}
-          >
-            Enable location
-          </button>
-        </div>
-      </div>
-    </section>
+    <div>
+      {refresh ? (
+        <RefreshLocation getGeoLocation={getGeoLocation} />
+      ) : (
+        <EnableLocation getGeoLocation={getGeoLocation} />
+      )}
+    </div>
   );
 }

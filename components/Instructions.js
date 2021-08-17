@@ -6,7 +6,7 @@ export default function Instructions() {
   return (
     <section className={styles.instructions}>
       {/* <h3>Choking and CPR</h3> */}
-      <Image src={cat} alt="cat" />
+      <Image src={cat} alt="cat" width="500" height="500" />
     </section>
   );
 }

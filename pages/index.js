@@ -1,34 +1,104 @@
-import styles from "../styles/Home.module.css";
+import client from "../apollo-client";
+import { gql } from "@apollo/client";
+
 import Head from "next/head";
+import styles from "../styles/Home.module.css";
+
+import ClientOnly from "../components/ClientOnly";
 import NavBar from "../components/NavBar";
 import Instructions from "../components/Instructions";
+import Hospitals from "../components/Hospitals";
 import NearestHospitals from "../components/NearestHospitals";
+import Footer from "../components/Footer";
 
-export default function Home() {
+export async function getServerSideProps(context) {
+  const YELP_QUERY = gql`
+    query getHospitals {
+      search(
+        categories: "emergencypethospital"
+        latitude: ${parseFloat(context.query.lat)}
+        longitude: ${parseFloat(context.query.long)}
+        open_now: true
+        sort_by: "distance"
+        limit: 5,
+      ) {
+        business {
+          id
+          name
+          rating
+          distance
+          display_phone
+          location {
+            formatted_address
+          }
+          hours {
+            open {
+              start
+              end
+              day
+            }
+          }
+        }
+      }
+    }
+  `;
+  let yelpData;
+  let error = null;
+
+  // data has to be named data
+  try {
+    const { data } = await client.query({
+      query: YELP_QUERY,
+    });
+    yelpData = data;
+  } catch (e) {
+    error = e.message;
+  }
+
+  return {
+    props: {
+      yelpData: yelpData ? yelpData.search.business : null,
+      error: error,
+    },
+  };
+}
+
+export default function Home({ yelpData }) {
+  // TODO: handle error
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>PetEmergency</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
+    <>
       <NavBar />
+      <div className={styles.container}>
+        <Head>
+          <title>PetEmergency</title>
+          <link rel="icon" href="/favicon.ico" />
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+          ></link>
+        </Head>
 
-      <h2>
-        Keep <span style={{ color: "#237ae1" }}>calm</span>. We are here to
-        help.
-      </h2>
+        <h2>
+          Keep <span style={{ color: "#237ae1" }}>calm</span>. We are here to
+          help.
+        </h2>
 
-      <main className={styles.main}>
-        <Instructions />
-        <NearestHospitals />
-      </main>
-
-      <footer className={styles.footer}>
-        Created with and by LOVE. Powered by Taiwanese tea. Copyright © 2021.
-        <br />
-        In loving memory of Kimchi 🧡
-      </footer>
-    </div>
+        <ClientOnly>
+          <main className={styles.main}>
+            <Instructions />
+            <section>
+              <h3>Nearest emergency pet hospitals</h3>
+              {yelpData ? <NearestHospitals refresh={true} /> : ""}
+              {yelpData ? (
+                <Hospitals data={yelpData} />
+              ) : (
+                <NearestHospitals refresh={false} />
+              )}
+            </section>
+          </main>
+        </ClientOnly>
+      </div>
+      <Footer />
+    </>
   );
 }

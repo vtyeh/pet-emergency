@@ -1,10 +1,11 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
+
 import NavBar from "../components/NavBar";
 import Instructions from "../components/Instructions";
-
 import ClientOnly from "../components/ClientOnly";
-import Hospitals from "../components/Hospitals";
+import NearestHospitals from "../components/NearestHospitals";
+import Footer from "../components/Footer";
 
 export default function TestHospitalsList() {
   const data = {
@@ -229,34 +230,31 @@ export default function TestHospitalsList() {
     },
   };
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>PetEmergency</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
+    <>
       <NavBar />
+      <div className={styles.container}>
+        <Head>
+          <title>PetEmergency</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
 
-      <h2>
-        Keep <span style={{ color: "#237ae1" }}>calm</span>. We are here to
-        help.
-      </h2>
+        <h2>
+          Keep <span style={{ color: "#237ae1" }}>calm</span>. We are here to
+          help.
+        </h2>
 
-      <main className={styles.main}>
-        <Instructions />
-        <div className={styles.nearestHospitals}>
-          <h3>Nearest emergency pet hospitals</h3>
-          <ClientOnly>
-            <Hospitals data={data.search.business} />
-          </ClientOnly>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        Created with and by LOVE. Powered by Taiwanese tea. Copyright © 2021.
-        <br />
-        In loving memory of Kimchi 🧡
-      </footer>
-    </div>
+        <ClientOnly>
+          <main className={styles.main}>
+            <Instructions />
+            <section>
+              <h3>Nearest emergency pet hospitals</h3>
+              {data ? <NearestHospitals refresh={true} /> : ""}
+              <NearestHospitals refresh={false} />
+            </section>
+          </main>
+        </ClientOnly>
+      </div>
+      <Footer />
+    </>
   );
 }

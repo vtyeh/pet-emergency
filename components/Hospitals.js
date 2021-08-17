@@ -1,6 +1,6 @@
 import styles from "../styles/Home.module.css";
 
-export default function Hospitals({ data }) {
+export default function Hospitals({ data, error }) {
   console.log("I AM YOUR DATA", data);
 
   const metersToMiles = (meters) => {
