@@ -8,17 +8,16 @@ import kimchi from "../public/kimchi.jpg";
 export default function AboutUs() {
   return (
     <>
+      <Head>
+        <title>PetEmergency</title>
+        <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        ></link>
+      </Head>
       <NavBar />
       <div className={styles.container}>
-        <Head>
-          <title>PetEmergency</title>
-          <link rel="icon" href="/favicon.ico" />
-          <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-          ></link>
-        </Head>
-
         <main>
           <h1>hi, we&#39;re LOc & VEnessa!</h1>
           <p>

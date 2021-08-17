@@ -231,18 +231,16 @@ export default function TestHospitalsList() {
   };
   return (
     <>
+      <Head>
+        <title>PetEmergency</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <NavBar />
+      <h1>
+        Keep <span style={{ color: "#237ae1" }}>calm</span>. We are here to
+        help.
+      </h1>
       <div className={styles.container}>
-        <Head>
-          <title>PetEmergency</title>
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-
-        <h2>
-          Keep <span style={{ color: "#237ae1" }}>calm</span>. We are here to
-          help.
-        </h2>
-
         <ClientOnly>
           <main className={styles.main}>
             <Instructions />

@@ -67,22 +67,20 @@ export default function Home({ yelpData }) {
   // TODO: handle error
   return (
     <>
+      <Head>
+        <title>PetEmergency</title>
+        <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        ></link>
+      </Head>
       <NavBar />
+      <h1>
+        Keep <span style={{ color: "#237ae1" }}>calm</span>. We are here to
+        help.
+      </h1>
       <div className={styles.container}>
-        <Head>
-          <title>PetEmergency</title>
-          <link rel="icon" href="/favicon.ico" />
-          <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-          ></link>
-        </Head>
-
-        <h2>
-          Keep <span style={{ color: "#237ae1" }}>calm</span>. We are here to
-          help.
-        </h2>
-
         <ClientOnly>
           <main className={styles.main}>
             <Instructions />
