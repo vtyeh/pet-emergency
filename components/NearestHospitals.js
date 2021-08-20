@@ -1,13 +1,13 @@
-import { useRouter } from "next/router";
-import EnableLocation from "./EnableLocation";
-import RefreshLocation from "./RefreshLocation";
+import { useRouter } from 'next/router';
+import EnableLocation from './EnableLocation';
+import RefreshLocation from './RefreshLocation';
 
 export default function NearestHospitals({ refresh }) {
   const router = useRouter();
 
   const getCoordinates = (position) => {
     router.replace({
-      pathname: "/",
+      pathname: '/',
       query: { lat: position.coords.latitude, long: position.coords.longitude },
     });
   };
@@ -16,7 +16,7 @@ export default function NearestHospitals({ refresh }) {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(getCoordinates);
     } else {
-      console.log("Geolocation is not supported by this browser.");
+      console.log('Geolocation is not supported by this browser.');
     }
   };
 

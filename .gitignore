@@ -34,4 +34,7 @@ yarn-error.log*
 .vercel
 
 # development
-.eslintrc
+.eslintrc.json
+.prettierrc.json
+package-lock.json
+

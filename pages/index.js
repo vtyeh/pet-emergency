@@ -1,15 +1,15 @@
-import client from "../apollo-client";
-import { gql } from "@apollo/client";
+import client from '../apollo-client';
+import { gql } from '@apollo/client';
 
-import Head from "next/head";
-import styles from "../styles/Home.module.css";
+import Head from 'next/head';
+import styles from '../styles/Home.module.css';
 
-import ClientOnly from "../components/ClientOnly";
-import NavBar from "../components/NavBar";
-import Instructions from "../components/Instructions";
-import Hospitals from "../components/Hospitals";
-import NearestHospitals from "../components/NearestHospitals";
-import Footer from "../components/Footer";
+import ClientOnly from '../components/ClientOnly';
+import NavBar from '../components/NavBar';
+import Instructions from '../components/Instructions';
+import Hospitals from '../components/Hospitals';
+import NearestHospitals from '../components/NearestHospitals';
+import Footer from '../components/Footer';
 
 export async function getServerSideProps(context) {
   const YELP_QUERY = gql`
@@ -77,7 +77,7 @@ export default function Home({ yelpData }) {
       </Head>
       <NavBar />
       <h1>
-        Keep <span style={{ color: "#237ae1" }}>calm</span>. We are here to
+        Keep <span style={{ color: '#4798cf' }}>calm</span>. We are here to
         help.
       </h1>
       <div className={styles.container}>
@@ -86,7 +86,7 @@ export default function Home({ yelpData }) {
             <Instructions />
             <section>
               <h3>Nearest emergency pet hospitals</h3>
-              {yelpData ? <NearestHospitals refresh={true} /> : ""}
+              {/* {yelpData ? <NearestHospitals refresh={true} /> : ''} */}
               {yelpData ? (
                 <Hospitals data={yelpData} />
               ) : (

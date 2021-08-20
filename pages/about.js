@@ -1,9 +1,9 @@
-import NavBar from "../components/NavBar";
-import Footer from "../components/Footer";
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
-import kimchi from "../public/kimchi.jpg";
+import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
+import Head from 'next/head';
+import Image from 'next/image';
+import styles from '../styles/Home.module.css';
+import kimchi from '../public/kimchi.jpg';
 
 export default function AboutUs() {
   return (
@@ -21,7 +21,7 @@ export default function AboutUs() {
         <main>
           <h1>hi, we&#39;re LOc & VEnessa!</h1>
           <p>
-            We created this app in loving memory of our orange tabby, Kimchi.{" "}
+            We created this app in loving memory of our orange tabby, Kimchi.{' '}
             <br /> He was our sunshine on a rainy day and the kindest soul
             we&#39;ve ever met. But on one random Taco Tuesday night, he fell
             from his cat tower. He was limp and gasping for air as we held him,

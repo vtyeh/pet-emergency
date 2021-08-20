@@ -1,7 +1,7 @@
-import styles from "../styles/Home.module.css";
-import Link from "next/link";
-import Image from "next/image";
-import logo from "../public/logo.svg";
+import styles from '../styles/Home.module.css';
+import Link from 'next/link';
+import Image from 'next/image';
+import logo from '../public/logo.svg';
 
 export default function NavBar() {
   return (

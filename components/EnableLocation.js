@@ -1,6 +1,6 @@
-import styles from "../styles/Home.module.css";
-import Image from "next/image";
-import planet from "../public/location-request.svg";
+import styles from '../styles/Home.module.css';
+import Image from 'next/image';
+import planet from '../public/location-request.svg';
 
 export default function EnableLocation({ getGeoLocation }) {
   return (
