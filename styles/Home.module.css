@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 .container {
   /* min-height: 100vh;
@@ -62,9 +62,19 @@
   font-size: 0.7em;
 }
 
-/* .instructions {
+.instructions {
   width: 50%;
-} */
+}
+
+.instructionCard {
+  border: 1px solid white;
+  padding: 1.8em 1.2em 1.8em 1.2em;
+  border-radius: 25px;
+  background-color: white;
+  filter: drop-shadow(0 0.5rem 0.5rem rgba(0, 0, 0, 0.2));
+  transition: all 0.2s;
+  margin: 40px 0 40px 20px;
+}
 
 /* .nearestHospitals {
   width: 50%;
@@ -137,7 +147,7 @@
 .lightButton {
   font-family: Poppins, sans-serif;
   background-color: white;
-  border: 1px solid #237ae1;
+  border: 1px solid var(--main-blue-color);
   border-radius: 25px;
   color: #237ae1;
   /* padding: 0.7em 3em; */
@@ -149,8 +159,8 @@
 
 .darkButton {
   font-family: Poppins, sans-serif;
-  background-color: #237ae1;
-  border: 1px solid #237ae1;
+  background-color: var(--main-blue-color);
+  border: 1px solid var(--main-blue-color);
   border-radius: 25px;
   color: white;
   width: 45%;
@@ -160,8 +170,8 @@
 
 .getLocationButton {
   font-family: Poppins, sans-serif;
-  background-color: #237ae1;
-  border: 1px solid #237ae1;
+  background-color: var(--main-blue-color);
+  border: 1px solid var(--main-blue-color);
   border-radius: 25px;
   color: white;
   padding: 1em;
@@ -173,7 +183,7 @@
   background-color: transparent;
   border: none;
   border-radius: 25px;
-  color: #237ae1;
+  color: var(--main-blue-color);
 }
 
 .refreshButton:hover {
@@ -272,4 +282,11 @@ button:active.lightButton {
   .lightButton {
     font-size: 0.8em;
   }
+}
+
+.instructionGif {
+  /* -webkit-filter: sepia(0.5) hue-rotate(-10deg) saturate(1.4); */
+  filter: contrast(110%) brightness(120%) saturate(90%) hue-rotate(15deg);
+  width: 100%;
+  height: auto;
 }
