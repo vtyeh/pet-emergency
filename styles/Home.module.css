@@ -220,7 +220,7 @@ button:active.lightButton {
 
   .main {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 
   .instructions {
