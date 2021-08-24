@@ -178,16 +178,26 @@
   transition: all 0.3s;
 }
 
+.refreshHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
 .refreshButton {
   font-family: Poppins, sans-serif;
   background-color: transparent;
   border: none;
   border-radius: 25px;
   color: var(--main-blue-color);
+  opacity: 0.8;
+  font-size: 1em;
+  margin-left: 0.3em;
 }
 
 .refreshButton:hover {
-  color: gray;
+  color: var(--main-blue-color);
+  opacity: 1;
 }
 
 button:active.darkButton,

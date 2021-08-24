@@ -234,6 +234,10 @@ export default function TestHospitalsList() {
       <Head>
         <title>PetEmergency</title>
         <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
       </Head>
       <NavBar />
       <h1>
@@ -245,8 +249,10 @@ export default function TestHospitalsList() {
           <main className={styles.main}>
             <Instructions />
             <section>
-              <h3>Nearest emergency pet hospitals</h3>
-              {data ? <NearestHospitals refresh={true} /> : ''}
+              <h3 className={styles.refreshHeader}>
+                Nearest emergency pet hospitals
+                {data ? <NearestHospitals refresh={true} /> : ''}
+              </h3>
               <NearestHospitals refresh={false} />
             </section>
           </main>

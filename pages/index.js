@@ -73,7 +73,7 @@ export default function Home({ yelpData }) {
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-        ></link>
+        />
       </Head>
       <NavBar />
       <h1>
@@ -85,8 +85,10 @@ export default function Home({ yelpData }) {
           <main className={styles.main}>
             <Instructions />
             <section>
-              <h3>Nearest emergency pet hospitals</h3>
-              {/* {yelpData ? <NearestHospitals refresh={true} /> : ''} */}
+              <h3 className={styles.refreshHeader}>
+                Nearest emergency pet hospitals
+                {yelpData ? <NearestHospitals refresh={true} /> : ''}
+              </h3>
               {yelpData ? (
                 <Hospitals data={yelpData} />
               ) : (

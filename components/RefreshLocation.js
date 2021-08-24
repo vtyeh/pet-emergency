@@ -8,7 +8,7 @@ export default function RefreshLocation({ getGeoLocation }) {
         className={styles.refreshButton}
         onClick={getGeoLocation}
       >
-        Refresh location
+        <i className="fa fa-refresh"></i>
       </button>
     </>
   );
