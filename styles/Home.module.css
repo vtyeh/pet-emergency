@@ -17,7 +17,7 @@
 
 .navbar {
   padding-bottom: 0.5em;
-  border-bottom: 1px solid #383838;
+  border-bottom: 1px solid #cccccc;
   display: flex;
   justify-content: space-between;
   /* align-items: center; */
@@ -208,6 +208,15 @@ button:active.lightButton {
     padding: 0;
   }
 
+  .main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .instructions {
+    width: 100%;
+  }
+
   .hospitalCard {
     min-width: 400px;
   }
@@ -223,35 +232,30 @@ button:active.lightButton {
   }
 }
 
-@media screen and (max-width: 800px) {
-  .container {
-    padding: 0;
-  }
-
-  .main {
-    display: flex;
-    flex-direction: column;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .container {
-    padding: 0;
+@media screen and (max-width: 550px) {
+  .instructionCard {
+    min-width: 311px;
+    margin: 20px 0 40px 0;
   }
 
   .hospitalCard {
     min-width: 350px;
+    margin: 20px 0 40px 0;
   }
 }
 
 /* for mobile */
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 450px) {
   .container {
     padding: 0;
   }
 
   .main {
     padding: 0;
+  }
+
+  .instructions {
+    width: 100%;
   }
 
   .hospitalCard,
