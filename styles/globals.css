@@ -6,8 +6,9 @@ body {
   margin: 1em;
   font-family: Poppins, sans-serif;
   color: #383838;
-  background-color: #fcfbff;
-  --main-blue-color: #4798cf;
+  background-color: #faf6f4;
+  --main-blue-color: 71, 152, 207;
+  /* --main-blue-color: #4798cf; */
 }
 
 a {
