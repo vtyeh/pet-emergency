@@ -1,7 +1,8 @@
+import Skeleton from 'react-loading-skeleton';
 import styles from '../styles/Home.module.css';
 
-export default function Hospitals({ data, error }) {
-  console.log('I AM YOUR DATA', data);
+export default function Hospitals({ data, index }) {
+  // console.log('I AM YOUR DATA', data);
 
   const metersToMiles = (meters) => {
     return Math.round((meters / 1609.34) * 100) / 100;
@@ -34,7 +35,7 @@ export default function Hospitals({ data, error }) {
         const closeHour = Number(hours.end.substring(0, 2));
         const closeMin = Number(hours.end.substring(2, 4));
 
-        console.log({ name, openHour, openMin });
+        // console.log({ name, openHour, openMin });
 
         if (openTime === closeTime) {
           return 'open 24 hours';
@@ -63,53 +64,56 @@ export default function Hospitals({ data, error }) {
   };
 
   return (
-    <div>
-      {data &&
-        data.map(
-          (
-            { id, name, rating, distance, display_phone, location, hours },
-            index,
-          ) => (
-            <div key={id} className={styles.hospitalCard}>
-              {/* left of card */}
-              <div className={styles.cardLeft}>
-                <div className={styles.miles}>{metersToMiles(distance)} mi</div>
-                <div className={styles.rating}>⭐ {rating}</div>
-              </div>
-              {/* right of card */}
-              <div className={styles.cardRight}>
-                <div className={styles.hospitalName}>
-                  {index + 1}. {name}
-                </div>
-                <div className={styles.subtext}>
-                  {location.formatted_address}{' '}
-                </div>
-                <div className={styles.businessInfo}>
-                  {display_phone}{' '}
-                  <span style={{ color: 'green' }}>
-                    {getOpenTime(hours[0].open, name)}
-                  </span>
-                </div>
-                <div className={styles.buttons}>
-                  <button
-                    className={styles.darkButton}
-                    onClick={() =>
-                      handleNavigateButton(location.formatted_address)
-                    }
-                  >
-                    Navigate
-                  </button>
-                  <button
-                    className={styles.lightButton}
-                    onClick={() => handleCopy(location.formatted_address)}
-                  >
-                    Copy
-                  </button>
-                </div>
-              </div>
+    <>
+      <div className={styles.hospitalCard}>
+        {/* left of card */}
+        <div className={styles.cardLeft}>
+          {(data.distance && (
+            <div className={styles.miles}>
+              {metersToMiles(data.distance)} mi
             </div>
-          ),
-        )}
-    </div>
+          )) || <Skeleton width={40} />}
+          {(data.rating && (
+            <div className={styles.rating}>⭐ {data.rating}</div>
+          )) || <Skeleton width={40} />}
+        </div>
+        {/* right of card */}
+        <div className={styles.cardRight}>
+          <div className={styles.hospitalName}>
+            {data.name && <span>{index + 1}.</span>}{' '}
+            {data.name || <Skeleton height={20} />}
+          </div>
+          <div className={styles.subtext}>
+            {(data.location && data.location.formatted_address) || (
+              <Skeleton count={3} />
+            )}{' '}
+          </div>
+          <div className={styles.businessInfo}>
+            {data.display_phone}{' '}
+            <span style={{ color: 'green' }}>
+              {data.hours && getOpenTime(data.hours[0].open, data.name)}
+            </span>
+          </div>
+          {Object.keys(data).length != 0 && (
+            <div className={styles.buttons}>
+              <button
+                className={styles.darkButton}
+                onClick={() =>
+                  handleNavigateButton(data.location.formatted_address)
+                }
+              >
+                Navigate
+              </button>
+              <button
+                className={styles.lightButton}
+                onClick={() => handleCopy(data.location.formatted_address)}
+              >
+                Copy
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </>
   );
 }

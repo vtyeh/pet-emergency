@@ -1,6 +1,8 @@
 import client from '../apollo-client';
 import { gql } from '@apollo/client';
 
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 
@@ -57,13 +59,44 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      yelpData: yelpData ? yelpData.search.business : null,
+      yelpData: yelpData ? yelpData.search.business : [{}],
       error: error,
     },
   };
 }
 
 export default function Home({ yelpData }) {
+  const [buttonClicked, setButtonClicked] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleRouteStart = (url, { shallow }) => {
+      console.log(
+        `App is changing to ${url} ${
+          shallow ? 'with' : 'without'
+        } shallow routing`,
+      );
+      if (url.startsWith('/?')) {
+        setButtonClicked(true);
+      }
+    };
+    const handleRouteComplete = (url, { shallow }) => {
+      console.log('Route change complete.');
+      if (url.startsWith('/?')) {
+        setButtonClicked(false);
+      }
+    };
+
+    router.events.on('routeChangeStart', handleRouteStart);
+    router.events.on('routeChangeComplete', handleRouteComplete);
+
+    // If the component is unmounted, unsubscribe
+    // from the event with the `off` method:
+    // return () => {
+    //   router.events.off('routeChangeStart', handleRouteChange);
+    // };
+  }, []);
+
   // TODO: handle error
   return (
     <>
@@ -87,13 +120,27 @@ export default function Home({ yelpData }) {
             <section>
               <h3 className={styles.refreshHeader}>
                 Nearest emergency pet hospitals
-                {yelpData ? <NearestHospitals refresh={true} /> : ''}
+                {yelpData.length > 1 && <NearestHospitals refresh={true} />}
               </h3>
-              {yelpData ? (
-                <Hospitals data={yelpData} />
-              ) : (
+              {!buttonClicked && yelpData.length == 1 && (
                 <NearestHospitals refresh={false} />
               )}
+              {buttonClicked &&
+                yelpData.map((hospitalData, index) => (
+                  <Hospitals
+                    key={hospitalData.id || index}
+                    data={hospitalData}
+                    index={index}
+                  />
+                ))}
+              {yelpData.length > 1 &&
+                yelpData.map((hospitalData, index) => (
+                  <Hospitals
+                    key={hospitalData.id || index}
+                    data={hospitalData}
+                    index={index}
+                  />
+                ))}
             </section>
           </main>
         </ClientOnly>
