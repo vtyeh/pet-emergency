@@ -59,7 +59,7 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      yelpData: yelpData ? yelpData.search.business : [{}],
+      yelpData: yelpData ? yelpData.search.business : [{}, {}],
       error: error,
     },
   };
@@ -120,9 +120,9 @@ export default function Home({ yelpData }) {
             <section>
               <h3 className={styles.refreshHeader}>
                 Nearest emergency pet hospitals
-                {yelpData.length > 1 && <NearestHospitals refresh={true} />}
+                {yelpData.length > 2 && <NearestHospitals refresh={true} />}
               </h3>
-              {!buttonClicked && yelpData.length == 1 && (
+              {!buttonClicked && yelpData.length == 2 && (
                 <NearestHospitals refresh={false} />
               )}
               {buttonClicked &&
@@ -133,7 +133,7 @@ export default function Home({ yelpData }) {
                     index={index}
                   />
                 ))}
-              {yelpData.length > 1 &&
+              {yelpData.length > 2 &&
                 yelpData.map((hospitalData, index) => (
                   <Hospitals
                     key={hospitalData.id || index}
